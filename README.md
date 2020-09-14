@@ -51,13 +51,15 @@ clauses (disjunctions of literals) by typing
    constructs the same Clause instance as the (longer) expression above.
    
    Make sure the Clause class supports the following operators:
-     - equality: e.g. ```cnf.c('!A || B') == cnf.c('A || !B')```. Note that the
+     - equality: e.g. ```cnf.c('!A || B') == cnf.c('B || !A')```. Note that the
      literals of a clause have no ordering, so these clauses are considered equal.
      - inequality: e.g. ```cnf.c('!A || B') != cnf.c('!A || !B')```.
      - indexing: e.g. ```cnf.c('!A || B')['A']``` should evaluate to ```False```
      (because ```A``` has negative polarity in the clause) and 
      ```cnf.c('!A || B')['B']``` should evaluate to ```True``` (because ```B``` has
-     positive polarity in the clause).
+     positive polarity in the clause). You should only be able to index symbols,
+     not literals. If you try to index a symbol that isn't in the clause, then
+     an Exception should be raised.
      - Boolean conversion: ```bool(cnf.c('FALSE'))``` should evaluate to False,
      whereas any other clause should evaluate to True.
      - String conversion: ```str(cnf.c('!A || B'))``` should evaluate to ```'!A || B'```.
