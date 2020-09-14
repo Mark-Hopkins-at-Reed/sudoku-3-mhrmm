@@ -38,7 +38,7 @@ succeed:
 2. Create a class called Clause such that we can create propositional logic
 clauses (disjunctions of literals) by typing
 
-    Clause([Literal("B", polarity=True), Literal("C", polarity=False)])
+        Clause([Literal("B", polarity=True), Literal("C", polarity=False)])
     
 which would create a clause corresponding to (B or NOT C). 
 
@@ -96,29 +96,29 @@ succeed:
 
 3. Create a class called Cnf such that we can create CNF sentences by typing
 
-    Cnf([cnf.c('!A || B'), cnf.c('B || D')])
+        Cnf([cnf.c('!A || B'), cnf.c('B || D')])
     
-which would create a CNF sentence corresponding to (NOT A OR B) AND (B OR D). 
+   which would create a CNF sentence corresponding to (NOT A OR B) AND (B OR D). 
 
-Once this is complete, we've provided a convenience function in ```cnf.py``` for
-constructing a CNF sentence from a string representation. Namely, the code
+   Once this is complete, we've provided a convenience function in ```cnf.py``` for
+   constructing a CNF sentence from a string representation. Namely, the code
 
-    import cnf
-    cnf.sentence('\n'.join(['B || !C', 'B || D']))
+       import cnf
+       cnf.sentence('\n'.join(['B || !C', 'B || D']))
     
-constructs the same Cnf instance as the expression above.
-
-Make sure the Cnf class supports the following operators:
+   constructs the same Cnf instance as the expression above.
    
-  - String conversion: ```str(cnf.sentence('!A || B\n!B || !C'))``` 
-  should evaluate to ```'!A || B\n!B || !C'```. The clauses should be 
-  alphabetically ordered, so ```str(cnf.sentence('!B || !C\n!A || B'))```
-  should also evaluate to ```'!A || B\n!B || !C'```.
-  - .symbols() method: ```cnf.sentence('!A || B\n!B || !C')).symbols()``` 
-  should return the set ```{'A', 'B', 'C'}```,
-  corresponding to the symbols that appear in the clause.
+   Make sure the Cnf class supports the following operators:
+      
+     - String conversion: ```str(cnf.sentence('!A || B\n!B || !C'))``` 
+     should evaluate to ```'!A || B\n!B || !C'```. The clauses should be 
+     alphabetically ordered, so ```str(cnf.sentence('!B || !C\n!A || B'))```
+     should also evaluate to ```'!A || B\n!B || !C'```.
+     - .symbols() method: ```cnf.sentence('!A || B\n!B || !C')).symbols()``` 
+     should return the set ```{'A', 'B', 'C'}```,
+     corresponding to the symbols that appear in the clause.
   
-Once you have a successful implementation, the following unit tests should
-succeed:
+   Once you have a successful implementation, the following unit tests should
+   succeed:
 
-    python -m unittest test_cnf.TestSentence
+       python -m unittest test_cnf.TestSentence
